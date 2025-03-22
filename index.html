@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Formula evaluation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formula evaluation</h2>
+
+        <label>Unit price:</label>
+        <input type="text" id="fee" placeholder="price per unit">
+
+        <label>Count:</label>
+        <input type="text" id="count" placeholder="totol count">
+
+        <label>Discount:</label>
+        <input type="text" id="discount" placeholder="Discount">
+
+        <custom-formula id="f1" formula="fee*count - discount">hello</custom-formula>  
+        <custom-formula id="f2" formula="fee* count *1.09 - discount"></custom-formula>
+        <custom-formula id="f3" formula="(fee-discount)*count"></custom-formula>
+
+    <script src="script.js"></script>
+</body>
+</html>
