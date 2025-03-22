@@ -34,7 +34,7 @@ class MyFormula extends HTMLElement {
     }
 
     render() {
-        let expression = this.getAttribute('formula') || '';
+        let expression = this.getAttribute('evaluator') || '';
         let evaluatedExpression = expression;
         let flag = true;
         inputs.forEach((input) => {
@@ -48,7 +48,7 @@ class MyFormula extends HTMLElement {
             evaluatedExpression = evaluatedExpression.replaceAll(regex, numberValue);
         });
         const result = eval(evaluatedExpression);
-        this.innerHTML = flag ? `<p>${evaluatedExpression} = ${result}</p>` : `<p>INV</p>`
+        this.innerHTML = flag ? `<p>${evaluatedExpression} = ${result}</p>` : `<p>Invalid Formula</p>`
     }
 }
 
@@ -59,7 +59,7 @@ customElements.define("custom-formula", MyFormula);
 در قسمت ساخته شدن آن یکبار متود `render` صدا می‌شود تا برای اولین بار به نمایش دربیاید.
 
 
-در متود `render` با استفاده از regex تمامی `exact_match` های رشته فرمول با `id` های ورودی ها جایگذاری می‌شوند و در درصورت تولید کردن `NaN` از `Invalid Inputs` برای خروجی استفاده می‌کند.
+در متود `render` با استفاده از regex تمامی `exact_match` های رشته فرمول با `id` های ورودی ها جایگذاری می‌شوند و در درصورت تولید کردن `NaN` از `Invalid Formula` برای خروجی استفاده می‌کند.
 
 در خط آخر المان جدید را با اسم `custom-formula` ثبت کرده ایم.
 
@@ -109,9 +109,9 @@ calculateFormulas();
         <label>Discount:</label>
         <input type="text" id="discount" placeholder="Discount">
 
-        <custom-formula id="f1" formula="fee*count - discount">hello</custom-formula>  
-        <custom-formula id="f2" formula="fee* count *1.09 - discount"></custom-formula>
-        <custom-formula id="f3" formula="(fee-discount)*count"></custom-formula>
+        <custom-formula id="f1" evaluator="fee*count - discount">hello</custom-formula>  
+        <custom-formula id="f2" evaluator="fee* count *1.09 - discount"></custom-formula>
+        <custom-formula id="f3" evaluator="(fee-discount)*count"></custom-formula>
 
     <script src="script.js"></script>
 </body>

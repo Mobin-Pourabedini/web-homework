@@ -25,7 +25,7 @@ class MyFormula extends HTMLElement {
     }
 
     render() {
-        let expression = this.getAttribute('formula') || '';
+        let expression = this.getAttribute('evaluator') || '';
         let evaluatedExpression = expression;
         let flag = true;
         inputs.forEach((input) => {
@@ -39,7 +39,7 @@ class MyFormula extends HTMLElement {
             evaluatedExpression = evaluatedExpression.replaceAll(regex, numberValue);
         });
         const result = eval(evaluatedExpression);
-        this.innerHTML = flag ? `<p>${evaluatedExpression} = ${result}</p>` : `<p>INV</p>`
+        this.innerHTML = flag ? `<p>${evaluatedExpression} = ${result}</p>` : `<p>Invalid Formula</p>`
     }
 }
 
